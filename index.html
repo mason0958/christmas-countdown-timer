@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test Countdown Project</title>
+	<link rel="stylesheet" type="text/css" href="http://meyerweb.com/eric/tools/css/reset/reset.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="style.css">
+
+</head>
+
+	<style type="text/css" media="screen">
+		#timer{
+			font-size:  72px;
+		}
+	</style>
+
+<body>
+	<div id="timer">---</div>
+
+	<button onclick="pause()">pause</button>
+	<button onclick="start()">start</button>
+
+	<script type="text/javascript">
+		
+		var now = Date.now();
+
+		var christmasDay = new Date('December 25, 2016 00:00').getTime();
+
+		// var newSecondsTillChristmas = (christmasDay - now) / 1000;
+
+		var secondsTillChristmas = ((christmasDay - now) / 1000);
+
+		var minutesTillChristmas = secondsTillChristmas / 60;
+
+		var hoursTillChristmas = minutesTillChristmas / 60;
+
+		var daysTillChristmas = hoursTillChristmas / 24;
+
+		var timerDiv = document.getElementById('timer');
+		timerDiv.innerHTML = secondsTillChristmas + " seconds till christmas";
+
+		function updateCounter() {
+			var now = Date.now();
+			var newSecondsTillChristmas = (christmasDay - now) / 10;
+
+			timerDiv.innerHTML = newSecondsTillChristmas + "microseconds till christmas";
+			console.log(newSecondsTillChristmas);
+		}
+
+		function pause() {
+			clearInterval(counterInterval);
+		}
+
+		function start() {
+			counterInterval = setInterval(updateCounter, 10);
+		}
+
+		var counterInterval;
+
+		setInterval(updateCounter(), 1000);
+
+	</script>
+
+	
+</body>
+</html>
